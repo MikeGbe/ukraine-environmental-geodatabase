@@ -31,7 +31,6 @@ FROM countries;
 /*  
 -- Select business name, founding year, and country code from businesses; and category from categories
 -- where the founding year was before 1000, arranged from oldest to newest */
-
 SELECT bus.business, bus.year_founded, bus.country_code, cat.category
 FROM businesses AS bus
 INNER JOIN categories AS cat
@@ -76,7 +75,7 @@ FROM businesses
 WHERE year_founded = 578;
 
 
---multi-table join of Country and Catagories on Businesses  
+--Q7: multi-table join of Country and Catagories on Businesses  
 SELECT *
 FROM businesses AS bus
 INNER JOIN categories AS cat
@@ -85,13 +84,24 @@ INNER JOIN countries as cnt
 ON bus.country_code = cnt.country_code
 
 
---Selecting Catagory/Continent pair by count
-SELECT cat.category, COUNT(cat.category) AS n
+-- Q8: Gropuing catagories by continent 
+
+SELECT cat.category, cnt.continent, COUNT(cat.category) AS n
 FROM businesses AS bus
 INNER JOIN categories AS cat
 ON bus.category_code = cat.category_code
 INNER JOIN countries as cnt
 ON bus.country_code = cnt.country_code
-GROUP BY cat.category ORDER BY n;
+GROUP BY continent, cat.category
+ORDER BY n DESC;
+
+--Q9: Selecting Catagory/Continent pair by count
+SELECT cat.category, cnt.continent, COUNT(cat.category) AS nt 
+FROM businesses AS bus
+INNER JOIN categories AS cat
+ON bus.category_code = cat.category_code
+INNER JOIN countries as cnt
+ON bus.country_code = cnt.country_code
+GROUP BY continent, cat.category
 
 /*  */
