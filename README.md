@@ -18,7 +18,7 @@ This project implements a spatially enabled PostgreSQL/PostGIS geodatabase to mo
 
 ## 🧱 Schema Overview
 
-![ER Diagram](docs/er_diagram.png)
+![ER Diagram](docs/schema_diagram.png)
 
 Key tables:
 - `waterbodies (Polygon)`
